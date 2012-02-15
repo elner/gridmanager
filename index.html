@@ -1,1 +1,135 @@
-test
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="ie"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="utf-8"/>
+    <title>Grid Manager</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="javascript/generic.js"></script>
+    <!--[if lt IE 9]>
+      <script src="javascript/respond.min.js"></script>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="container">
+    <div id="wrapper">
+
+    <header>
+        <form action="#" method="get" accept-charset="utf-8">
+          <h1>Grid manager</h1>
+          <fieldset class="widths">
+            <h4>Width in px</h4>
+            <div class="control-group">
+              <input type="number" name="margin-width" value="20" id="margin-width">
+              <label for="margin-width">Margin</label>
+            </div>
+            <div class="control-group">
+              <input type="number" name="gutter-width" value="20" id="gutter-width">
+              <label for="gutter-width">Gutter</label>
+            </div>
+            <div class="control-group">
+              <input type="number" name="col-width" value="40" id="col-width">
+              <label for="col-width">Column</label>
+            </div>
+          </fieldset>
+          <div class="hr"></div>
+          <fieldset class="columns">
+            <h4>Nr of columns</h4>
+            <div class="control-group">
+              <input type="number" name="desktop-columns" value="16" id="desktop-columns">
+              <label for="desktop-columns">1024<span class="unit">px</span></label>
+            </div>
+            <div class="control-group">
+              <input type="number" name="tablet-portrait-columns" value="12" id="tablet-portrait-columns">
+              <label for="tablet-portrait-columns">768<span class="unit">px</span></label>
+            </div>
+            <div class="control-group">
+              <input type="number" name="mobile-landscape-columns" value="7" id="mobile-landscape-columns">
+              <label for="mobile-landscape-columns">480<span class="unit">px</span></label>
+            </div>
+            <div class="control-group">
+              <input type="number" name="mobile-portrait-columns" value="5" id="mobile-portrait-columns">
+              <label for="mobile-portrait-columns">320<span class="unit">px</span></label>
+            </div>
+          </fieldset>
+          <div class="hr"></div>
+          <p>
+          <input type="checkbox" checked="checked" name="auto-device-width" value="" id="auto-device-width">
+          <label for="auto-device-width">Auto calculate columns</label>
+
+          <!--<input id="update-grid" type="submit" value="Update grid">--></p>
+        </form>
+    </header>
+
+    <article>
+
+        <div id="desktop" class="grid-container">
+          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
+          <div class="colgroup">
+            <div class="margin col">&nbsp;</div>
+              <div class="grid-content">
+                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
+                <div class="colgroup">
+                </div>
+              </div>
+            <div class="margin col">&nbsp;</div>
+          </div>
+        </div>
+
+        <div id="tablet-portrait" class="grid-container">
+          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
+          <div class="colgroup">
+            <div class="margin col">&nbsp;</div>
+              <div class="grid-content">
+                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
+                <div class="colgroup">
+                </div>
+              </div>
+            <div class="margin col">&nbsp;</div>
+          </div>
+        </div>
+
+        <div id="mobile-landscape" class="grid-container">
+          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
+          <div class="colgroup">
+            <div class="margin col">&nbsp;</div>
+              <div class="grid-content">
+                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
+                <div class="colgroup">
+                </div>
+              </div>
+            <div class="margin col">&nbsp;</div>
+          </div>
+        </div>
+
+        <div id="mobile-portrait" class="grid-container">
+          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
+          <div class="colgroup">
+            <div class="margin col">&nbsp;</div>
+              <div class="grid-content">
+                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
+                <div class="colgroup">
+                </div>
+              </div>
+            <div class="margin col">&nbsp;</div>
+          </div>
+        </div>
+
+      <div id="device-widths">
+        <p class="width-1024"><i><span>1024</span><span class="unit">px</span></i></p>
+        <p class="width-768"><i><span>768</span><span class="unit">px</span></i></p>
+        <p class="width-480"><i><span>480</span><span class="unit">px</span></i></p>
+        <p class="width-320"><i><span>320</span><span class="unit">px</span></i></p>
+      </div>
+
+    </article>
+
+    </div><!-- /#wrapper -->
+    </div><!-- /#container -->
+
+  </body>
+
+</html>
+
