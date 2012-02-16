@@ -3,9 +3,9 @@ jQuery.fn.create_grid = function(options) {
   options                         = $.extend( settings, options );
   var o                           = options;
   var this_id                     = $(this).attr('id');
-  var margin_width                = parseInt($('#margin-width').val());
-  var gutter_width                = parseInt($('#gutter-width').val());
-  var col_width                   = parseInt($('#col-width').val());
+  var margin_width                = sanitize_number($('#margin-width').val());
+  var gutter_width                = sanitize_number($('#gutter-width').val());
+  var col_width                   = sanitize_number($('#col-width').val());
   var cont                        = [];
   var grid_content_width          = 0;
   var gutter                      = '<div style="width:'+gutter_width+'px;" class="gutter col">&nbsp;</div>';
@@ -43,7 +43,7 @@ jQuery.fn.create_grid = function(options) {
   $('#'+this_id+'-columns').prev().text(columns)
   }
   else {
-    var columns = parseInt($('#'+this_id+'-columns').val());
+    var columns = sanitize_number($('#'+this_id+'-columns').val());
   }
 
   // Create columns + gutter
@@ -65,9 +65,9 @@ jQuery.fn.create_grid = function(options) {
 };
 
 jQuery.fn.update_layouts = function() {
-  var gutter_width              = parseInt($('#gutter-width').val());
-  var col_width                 = parseInt($('#col-width').val());
-  var margin_width              = parseInt($('#margin-width').val());
+  var gutter_width              = sanitize_number($('#gutter-width').val());
+  var col_width                 = sanitize_number($('#col-width').val());
+  var margin_width              = sanitize_number($('#margin-width').val());
   var is_auto_device_width      = $('#auto-device-width').is(':checked');
 
   $('.col').width(col_width);
@@ -112,6 +112,15 @@ function update_info() {
   $('#mobile-portrait .width-grid-content').text(  $('#mobile-portrait .grid-content').width() );
   return this;
 };
+
+function sanitize_number(s) {
+  if( isNaN(parseInt(s)) || parseInt(s) < 0) {
+    return 0;
+  }
+  else {
+    return parseInt(s);
+  }
+}
 
 $(document).ready(function () {
 

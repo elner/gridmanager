@@ -1,0 +1,20 @@
+=ios
+  #wrapper
+    width: 1024px
+
+
+// iPad [portrait + landscape]
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px)
+  +ios
+
+// iPhone [portrait + landscape]
+@media only screen and (max-device-width: 480px)
+  +ios
+
+// iPhone Landscape
+@media all and (max-device-width: 480px) and (orientation:landscape)
+  +ios
+
+// iPad Landscape
+@media all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)
+  +ios
