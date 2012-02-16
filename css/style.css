@@ -315,3 +315,52 @@ article:after {
 #device-widths p i .unit {
   font-size: 0.8em;
 }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 2, ../sass/_media-queries.sass */
+  #wrapper, #header, article {
+    width: 1024px;
+    margin: 0 auto;
+  }
+
+  /* line 5, ../sass/_media-queries.sass */
+  article {
+    owerflow: hidden;
+  }
+}
+@media only screen and (max-device-width: 480px) {
+  /* line 2, ../sass/_media-queries.sass */
+  #wrapper, #header, article {
+    width: 1024px;
+    margin: 0 auto;
+  }
+
+  /* line 5, ../sass/_media-queries.sass */
+  article {
+    owerflow: hidden;
+  }
+}
+@media all and (max-device-width: 480px) and (orientation:landscape) {
+  /* line 2, ../sass/_media-queries.sass */
+  #wrapper, #header, article {
+    width: 1024px;
+    margin: 0 auto;
+  }
+
+  /* line 5, ../sass/_media-queries.sass */
+  article {
+    owerflow: hidden;
+  }
+}
+@media all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* line 2, ../sass/_media-queries.sass */
+  #wrapper, #header, article {
+    width: 1024px;
+    margin: 0 auto;
+  }
+
+  /* line 5, ../sass/_media-queries.sass */
+  article {
+    owerflow: hidden;
+  }
+}
