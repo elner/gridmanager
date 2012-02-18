@@ -164,40 +164,38 @@ header {
 /* line 73, ../sass/_site.sass */
 #grid-manager .colgroup .col p.val {
   color: #463f4c;
-  width: 2.5em;
-  padding-bottom: 0.1em;
+  padding: 0 0.6em 0.1em 0.6em;
   text-align: center;
   font-size: 2.8em;
   line-height: 1.1em;
 }
-/* line 80, ../sass/_site.sass */
+/* line 79, ../sass/_site.sass */
 #grid-manager .colgroup.columns {
   margin-top: 0.8em;
 }
-/* line 82, ../sass/_site.sass */
+/* line 81, ../sass/_site.sass */
 #grid-manager .colgroup.columns h4 {
   margin-bottom: 0.4em;
 }
-/* line 84, ../sass/_site.sass */
+/* line 83, ../sass/_site.sass */
 #grid-manager .colgroup.columns p.val {
   font-size: 2em;
-  width: 2.5em;
 }
-/* line 87, ../sass/_site.sass */
+/* line 85, ../sass/_site.sass */
 #grid-manager input[type="checkbox"] {
   margin-top: 20px;
 }
-/* line 89, ../sass/_site.sass */
+/* line 87, ../sass/_site.sass */
 #grid-manager .label {
   font-size: 0.7em;
 }
 
-/* line 92, ../sass/_site.sass */
+/* line 90, ../sass/_site.sass */
 .hr {
   clear: both;
 }
 
-/* line 95, ../sass/_site.sass */
+/* line 93, ../sass/_site.sass */
 .grid-container {
   background-color: #51788b;
   margin: 50px auto 0 auto;
@@ -210,7 +208,7 @@ header {
   border-bottom-left-radius: 0;
   zoom: 1;
 }
-/* line 100, ../sass/_site.sass */
+/* line 98, ../sass/_site.sass */
 .grid-container .info-box {
   clear: both;
   margin: 0;
@@ -222,7 +220,7 @@ header {
   height: 20px;
   line-height: 20px;
 }
-/* line 110, ../sass/_site.sass */
+/* line 108, ../sass/_site.sass */
 .grid-container .info-box .unit {
   font-size: 0.8em;
 }
@@ -235,7 +233,7 @@ header {
 .grid-container:after {
   clear: both;
 }
-/* line 113, ../sass/_site.sass */
+/* line 111, ../sass/_site.sass */
 .grid-container .col {
   background-color: #84b5cc;
   height: 30px;
@@ -246,11 +244,11 @@ header {
   color: #51788b;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
-/* line 122, ../sass/_site.sass */
+/* line 120, ../sass/_site.sass */
 .grid-container .margin.col {
   background-color: transparent;
 }
-/* line 124, ../sass/_site.sass */
+/* line 122, ../sass/_site.sass */
 .grid-container .grid-content {
   display: inline;
   float: left;
@@ -266,12 +264,12 @@ header {
 .grid-container .grid-content:after {
   clear: both;
 }
-/* line 130, ../sass/_site.sass */
+/* line 128, ../sass/_site.sass */
 .grid-container .grid-content .gutter {
   background-color: #acd4e4;
 }
 
-/* line 133, ../sass/_site.sass */
+/* line 131, ../sass/_site.sass */
 article {
   zoom: 1;
   margin-bottom: 40px;
@@ -287,7 +285,7 @@ article:after {
   clear: both;
 }
 
-/* line 138, ../sass/_site.sass */
+/* line 136, ../sass/_site.sass */
 #device-widths {
   position: relative;
   top: -460px;
@@ -297,7 +295,7 @@ article:after {
   margin: 0 auto;
   border-bottom: 1px solid rgba(255, 0, 0, 0.15);
 }
-/* line 146, ../sass/_site.sass */
+/* line 144, ../sass/_site.sass */
 #device-widths p {
   background: url(../images/device-width-left.png) no-repeat 0 0, url(../images/device-width-right.png) no-repeat 100% 0, url(../images/device-width-middle.png) repeat-x 0 0;
   position: absolute;
@@ -310,34 +308,34 @@ article:after {
   color: rgba(0, 0, 0, 0.6);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
-/* line 158, ../sass/_site.sass */
+/* line 156, ../sass/_site.sass */
 #device-widths p.width-1024 {
   width: 1024px;
   top: 0;
   margin-left: -512px;
 }
-/* line 162, ../sass/_site.sass */
+/* line 160, ../sass/_site.sass */
 #device-widths p.width-768 {
   width: 768px;
   top: 120px;
   height: 360px;
   margin-left: -384px;
 }
-/* line 167, ../sass/_site.sass */
+/* line 165, ../sass/_site.sass */
 #device-widths p.width-480 {
   width: 480px;
   top: 240px;
   height: 240px;
   margin-left: -240px;
 }
-/* line 172, ../sass/_site.sass */
+/* line 170, ../sass/_site.sass */
 #device-widths p.width-320 {
   width: 320px;
   top: 360px;
   height: 120px;
   margin-left: -160px;
 }
-/* line 177, ../sass/_site.sass */
+/* line 175, ../sass/_site.sass */
 #device-widths p i {
   position: absolute;
   border-top-left-radius: 0;
@@ -358,7 +356,7 @@ article:after {
   font-size: 12px;
   line-height: 1.4em;
 }
-/* line 193, ../sass/_site.sass */
+/* line 191, ../sass/_site.sass */
 #device-widths p i .unit {
   font-size: 0.8em;
 }
