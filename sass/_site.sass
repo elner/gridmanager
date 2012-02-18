@@ -19,15 +19,17 @@ body
 h1
   text-shadow: 0 2px 0 rgba(255,255,255, 1)
   color: #332b3a
-h1, h2, h3, h4, form input[type=number], .control-group span.col-width
+h1, h2, h3, h4, p.val
   font-family: 'IM Fell English SC', serif
   text-shadow: 0 1px 0 rgba(255,255,255, 1)
 header
   background: transparent url(../images/dashed.png) repeat-x left 98%
-  padding: 1em 0
   border-bottom: 1px solid rgba(0,0,0, .12)
-  +box-shadow(0,1,20, rgba(0,0,0, .6))
-form
+  +box-shadow(0 1px 20px rgba(0,0,0, .6))
+
+#grid-manager
+  +radial-gradient(50% 50%, ellipse contain, rgba(0,0,0, 0) 30%, rgba(0,0,0, .1) 100%)
+  padding: 1em 0
   h1
     font-weight: normal
     text-transform: uppercase
@@ -35,7 +37,7 @@ form
     line-height: 1.2em
     letter-spacing: .1em
   text-align: center
-  fieldset
+  .colgroup
     border-style: none
     padding: 0
     position: relative
@@ -45,56 +47,46 @@ form
     h4
       text-transform: uppercase
       font-weight: normal
-      margin: 1em 0 .3em
+      margin: 1em 0 0
       font-size: 1em
       position: relative
       left: -50%
       background: transparent url(../images/dashes.png) no-repeat center center
-    .control-group
+    .col
       display: inline-block
       position: relative
       left: -50%
       margin: 0 5px
-      label
-        display: block
-        font-size: .6em
-        text-align: center
-        color: rgb(140,140,140)
-        text-shadow: 0 1px 0 rgba(255,255,255, 1)
-        .unit
-          font-size: .9em
-      input[type=number]
-        background-color: rgba(255,255,255, .2)
-        border:
-          style: none
-          right: 1px solid rgba(255,255,255, .8)
-          bottom: 1px solid rgba(255,255,255, .8)
-        +box-shadow(2,2,4, rgba(0,0,0, .6), inset)
-        &:focus
-          background-color: rgba(255,255,255, .5)
-          color: black
-      input, span.col-width
-        color: #463F4C
-        width: 2.5em
-        text-align: center
-        font-size: 2.8em
-        line-height: 1.1em
-        +border-radius(32)
-        display: block
-        outline: none
-        &.disabled
-          border-style: none
-          background-color: transparent
-      span.col-width
-        padding: .3em .1em
-
+      p
+        margin: 0
+        &.label
+          font-size: .6em
+          text-align: center
+          color: rgb(110,110,110)
+          text-shadow: 0 1px 0 rgba(255,255,255, 1)
+          .decrease
+            margin-right: .3em
+          .increase
+            margin-left: .2em
+          .unit
+            font-size: .9em
+        &.val
+          color: #463F4C
+          width: 2.5em
+          padding-bottom: .1em
+          text-align: center
+          font-size: 2.8em
+          line-height: 1.1em
     &.columns
-      input, span.col-width
+      margin-top: .8em
+      h4
+        margin-bottom: .4em
+      p.val
         font-size: 2em
         width: 2.5em
   input[type="checkbox"]
     margin-top: 20px
-  label
+  .label
     font-size: .7em
 
 .hr
@@ -103,8 +95,8 @@ form
 .grid-container
   background-color: $grid-color-dark
   margin: 50px auto 0 auto
-  +box-shadow(0,10,10,rgba(0,0,0, .2))
-  +border-radius(5,5,0,0)
+  +box-shadow(0 10px 10px rgba(0,0,0, .2))
+  +border-radius(5px 5px 0 0)
   .info-box
     clear: both
     margin: 0
@@ -184,7 +176,7 @@ article
       margin-left: -#{(320/2)}px
     i
       position: absolute
-      +border-radius(0,0,3,3)
+      +border-radius(0 0 3px 3px)
       top: 5px
       left: 50%
       margin-left: -40px

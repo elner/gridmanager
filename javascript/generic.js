@@ -3,9 +3,9 @@ jQuery.fn.create_grid = function(options) {
   options                         = $.extend( settings, options );
   var o                           = options;
   var this_id                     = $(this).attr('id');
-  var margin_width                = sanitize_number($('#margin-width').val());
-  var gutter_width                = sanitize_number($('#gutter-width').val());
-  var col_width                   = sanitize_number($('#col-width').val());
+  var margin_width                = sanitize_number($('#margin-width .val').text());
+  var gutter_width                = sanitize_number($('#gutter-width .val').text());
+  var col_width                   = sanitize_number($('#col-width .val').text());
   var cont                        = [];
   var grid_content_width          = 0;
   var gutter                      = '<div style="width:'+gutter_width+'px;" class="gutter col">&nbsp;</div>';
@@ -39,11 +39,11 @@ jQuery.fn.create_grid = function(options) {
       grid_width += gutter_width;
     }
 
+  $('#'+this_id+'-columns .val').text(columns)
 
-  $('#'+this_id+'-columns').prev().text(columns)
   }
   else {
-    var columns = sanitize_number($('#'+this_id+'-columns').val());
+    var columns = sanitize_number($('#'+this_id+'-columns .val').text());
   }
 
   // Create columns + gutter
@@ -57,7 +57,7 @@ jQuery.fn.create_grid = function(options) {
     cont.push('<div style="width:'+col_width+'px;" class="col">'+(i+1)+'</div>' + gutter);
   }
   // Set width to container & print content
-  $('#'+this_id+'-columns').val(columns)
+  $('#'+this_id+'-columns .val').text(columns)
   $('#'+this_id+'.grid-container').width(grid_content_width + (margin_width * 2))
   $('#'+this_id+' .grid-content').width(grid_content_width);
   $('#'+this_id+' .grid-content .colgroup').html(cont.join(''));
@@ -65,12 +65,12 @@ jQuery.fn.create_grid = function(options) {
 };
 
 jQuery.fn.update_layouts = function() {
-  var gutter_width              = sanitize_number($('#gutter-width').val());
-  var col_width                 = sanitize_number($('#col-width').val());
-  var margin_width              = sanitize_number($('#margin-width').val());
+  var gutter_width              = sanitize_number($('#gutter-width .val').text());
+  var col_width                 = sanitize_number($('#col-width .val').text());
+  var margin_width              = sanitize_number($('#margin-width .val').text());
   var is_auto_device_width      = $('#auto-device-width').is(':checked');
 
-  $('.col').width(col_width);
+  $('#grid-container .col').width(col_width);
   $('.gutter').width(gutter_width);
 
   $('#desktop').create_grid({'is_auto_device_width' : is_auto_device_width});
@@ -83,18 +83,33 @@ jQuery.fn.update_layouts = function() {
   return this;
 };
 
+jQuery.fn.increase_width = function() {
+  var step = 1;
+  if($(this).parents('.colgroup').hasClass('widths')) step = 2;
+  $(this).text( sanitize_number($(this).text()) + step)
+  $('#desktop').update_layouts()
+  update_info();
+  return this;
+};
+
+jQuery.fn.decrease_width = function() {
+  var step = 1;
+  if($(this).parents('.colgroup').hasClass('widths')) step = 2;
+  var val = sanitize_number($(this).text());
+  if($(this).parents('.colgroup').hasClass('columns') && (val - step) < 1) return this;
+  if ((val - step) < 0) return this
+  $(this).text(val - step)
+  $('#desktop').update_layouts()
+  update_info();
+  return this;
+};
+
 function is_auto_device_width() {
     if ($('#auto-device-width').is(':checked')){
-      $(".columns input").each(function (i) {
-        $(this).hide().parent().prepend('<span class="col-width">'+$(this).val()+'</span>')
-      });
+      $(".columns .label a").hide()
     }
     else{
-       $(".columns input").each(function (i) {
-         $('span.col-width', $(this).parent()).hide()
-         $(this).show().val($('span.col-width', $(this).parent()).text());
-         $('span.col-width', $(this).parent()).remove();
-        });
+       $(".columns .label a").show()
     }
 };
 
@@ -127,17 +142,13 @@ $(document).ready(function () {
   $('#desktop').update_layouts();
   update_info();
 
-  $("form").submit(function() {
-    $('#desktop').update_layouts()
+  $(".increase").click(function() {
+    $('#'+$(this).parents('.col').attr('id')+' .val').increase_width()
     return false;
   });
 
-  $("input[type=number]").click(function() {
-    $('#desktop').update_layouts()
-    return false;
-  });
-  $("input[type=number]").keyup(function() {
-    $('#desktop').update_layouts()
+  $(".decrease").click(function() {
+    $('#'+$(this).parents('.col').attr('id')+' .val').decrease_width()
     return false;
   });
 

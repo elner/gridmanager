@@ -16,50 +16,77 @@
     <div id="container">
     <div id="wrapper">
     <header>
-        <form action="#" method="get" accept-charset="utf-8">
+        <div id="grid-manager" >
           <h1>Grid manager</h1>
-          <fieldset class="widths">
+          <div class="colgroup widths">
             <h4>Width in px</h4>
-            <div class="control-group">
-              <input type="number" name="margin-width" value="20" id="margin-width">
-              <label for="margin-width">Margin</label>
+            <div class="col" id="margin-width">
+              <p class="val">10</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                Margin
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
             </div>
-            <div class="control-group">
-              <input type="number" name="gutter-width" value="20" id="gutter-width">
-              <label for="gutter-width">Gutter</label>
+            <div class="col" id="gutter-width">
+              <p class="val">20</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                Gutter
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
             </div>
-            <div class="control-group">
-              <input type="number" name="col-width" value="40" id="col-width">
-              <label for="col-width">Column</label>
+            <div class="col" id="col-width">
+              <p class="val">52</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                Column
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
             </div>
-          </fieldset>
+          </div>
           <div class="hr"></div>
-          <fieldset class="columns">
+          <div class="colgroup columns">
             <h4>Nr of columns</h4>
-            <div class="control-group">
-              <input type="number" name="desktop-columns" value="16" id="desktop-columns">
-              <label for="desktop-columns">1024<span class="unit">px</span></label>
+            <div class="col" id="desktop-columns">
+              <p class="val">16</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                1024<span class="unit">px</span>
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
             </div>
-            <div class="control-group">
-              <input type="number" name="tablet-portrait-columns" value="12" id="tablet-portrait-columns">
-              <label for="tablet-portrait-columns">768<span class="unit">px</span></label>
+            <div class="col" id="tablet-portrait-columns">
+              <p class="val">8</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                768<span class="unit">px</span>
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
             </div>
-            <div class="control-group">
-              <input type="number" name="mobile-landscape-columns" value="7" id="mobile-landscape-columns">
-              <label for="mobile-landscape-columns">480<span class="unit">px</span></label>
+            <div class="col" id="mobile-landscape-columns">
+              <p class="val">5</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                480<span class="unit">px</span>
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
             </div>
-            <div class="control-group">
-              <input type="number" name="mobile-portrait-columns" value="5" id="mobile-portrait-columns">
-              <label for="mobile-portrait-columns">320<span class="unit">px</span></label>
+            <div class="col" id="mobile-portrait-columns">
+              <p class="val">3</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                320<span class="unit">px</span>
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
             </div>
-          </fieldset>
+          </div>
           <div class="hr"></div>
           <p>
-          <input type="checkbox" checked="checked" name="auto-device-width" value="" id="auto-device-width">
-          <label for="auto-device-width">Auto calculate columns</label>
-
-          <!--<input id="update-grid" type="submit" value="Update grid">--></p>
-        </form>
+            <input type="checkbox" checked="checked" name="auto-device-width" value="" id="auto-device-width">
+            <label for="auto-device-width">Auto calculate columns</label>
+          </p>
+        </div>
     </header>
 
     <article>
