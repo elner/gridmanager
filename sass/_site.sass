@@ -28,8 +28,9 @@ header
   +box-shadow(0 1px 20px rgba(0,0,0, .6))
 
 #grid-manager
-  +radial-gradient(50% 50%, ellipse contain, rgba(0,0,0, 0) 30%, rgba(0,0,0, .1) 100%)
+  +radial-gradient(50% 20%, circle cover, rgba(0,0,0, 0), rgba(0,0,0, .1) 80%)
   padding: 1em 0
+  overflow: hidden
   h1
     font-weight: normal
     text-transform: uppercase
@@ -73,7 +74,7 @@ header
             font-size: .9em
         &.val
           color: #463F4C
-          padding: 0 .6em .1em .6em
+          padding: 0 1em .1em 1em
           text-align: center
           font-size: 2.8em
           line-height: 1.1em
@@ -127,7 +128,51 @@ header
     background-color: $grid-color-medium
     .info-box
     .gutter
-      background-color: $grid-color-light  //#bbd887
+      background-color: $grid-color-light
+
+#grid-layout
+  position:  relative
+  top: -430px
+  margin: 0 auto
+  +box-shadow(0 10px 10px rgba(0,0,0, .2))
+  +border-radius(5px 5px 0 0)
+  background-color: $grid-color-dark
+  +clearfix
+  .info-box
+    clear: both
+    margin: 0
+    font-size: .7em
+    text-align: center
+    color: $grid-color-x-light
+    text-shadow: 0 -1px 0 rgba(0,0,0, .2)
+    padding: 0
+    height: 30px
+    line-height: 30px
+    .unit
+      font-size: .8em
+  .grid-content
+    background-color: $grid-color-light
+    float: left
+    .colgroup
+      margin-top: 2px
+      +colgroup
+  .colgroup.one
+    margin: 0
+    .info-box
+      background-color: $grid-color-medium
+  .col
+    overflow: hidden
+    +col
+    height: 30px
+    line-height: 30px
+    background-color: $grid-color-medium
+    text-align: center
+    font-size: .7em
+    color: $grid-color-dark
+    text-shadow: 0 1px 0 rgba(255,255,255, .2)
+  .margin.col
+    background-color: transparent
+
 
 article
   +clearfix

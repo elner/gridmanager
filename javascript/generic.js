@@ -61,8 +61,85 @@ jQuery.fn.create_grid = function(options) {
   $('#'+this_id+'.grid-container').width(grid_content_width + (margin_width * 2))
   $('#'+this_id+' .grid-content').width(grid_content_width);
   $('#'+this_id+' .grid-content .colgroup').html(cont.join(''));
+
   return this;
 };
+
+function grid_layout(){
+  // Grid layout
+  var margin_width        = sanitize_number($('#margin-width .val').text());
+  var gutter_width        = sanitize_number($('#gutter-width .val').text());
+  var col_width           = sanitize_number($('#col-width .val').text());
+  var grid_content_width  = sanitize_number($('#desktop .grid-content').width());
+  var columns             = sanitize_number($('#desktop-columns .val').text());
+
+  $('#grid-layout .width-grid-container').text(grid_content_width + (margin_width * 2))
+  $('#grid-layout').width(grid_content_width + (margin_width * 2));
+  $('#grid-layout .grid-content').width(grid_content_width);
+  $('#grid-layout .margin').width(margin_width);
+  $('#grid-layout .grid-content .colgroup').hide();
+  $('.colgroup.one').show();
+  $('#grid-layout .width-grid-content').text(grid_content_width);
+
+  $('#grid-layout .grid-content .col').css('margin', '0 ' +(gutter_width /2)+'px');
+  $('#grid-layout .grid-content .col.first').css('margin-left', '0');
+  $('#grid-layout .grid-content .col.last').css('margin-right', '0');
+
+  // Two col
+  var col_two_width = get_column_width(2);
+  if(is_int(col_two_width)) {
+    $('.colgroup.two').show();
+    $('.colgroup.two .col').width(col_two_width).text(col_two_width+'px');
+  }
+  // Three col
+  var col_three_width = get_column_width(3);
+  if(is_int(col_three_width)) {
+    $('.colgroup.three').show();
+    $('.colgroup.three .col').width(col_three_width).text(col_three_width+'px');
+
+    $('.colgroup.third').show();
+    var two_three = multiply_column_width(col_three_width,2);
+    $('.colgroup.third .col.one-three').css({ "width": col_three_width+"px" }).text(col_three_width+'px');
+    $('.colgroup.third .col.two-three').css({ "width": two_three+"px" }).text(two_three+'px');
+  }
+  // Four col
+  var col_four_width = get_column_width(4);
+  if(is_int(col_four_width)) {
+    $('.colgroup.four').show();
+    $('.colgroup.four .col').width(col_four_width).text(col_four_width+'px');
+
+    $('.colgroup.fourth').show();
+    var tree_four = multiply_column_width(col_four_width,3);
+    $('.colgroup.fourth .col.one-four').css({ "width": col_four_width+"px" }).text(col_four_width+'px');
+    $('.colgroup.fourth .col.three-four').css({ "width": tree_four+"px" }).text(tree_four+'px');
+  }
+  // Six col
+  var col_six_width = get_column_width(6);
+  if(is_int(col_six_width)) {
+    $('.colgroup.six').show();
+    $('.colgroup.six .col').width(col_six_width).text(col_six_width+'px');
+
+    $('.colgroup.sixth').show();
+    var five_six = multiply_column_width(col_six_width,5);
+    $('.colgroup.sixth .col.one-six').css({ "width": col_six_width+"px" }).text(col_six_width+'px');
+    $('.colgroup.sixth .col.five-six').css({ "width": five_six+"px" }).text(five_six+'px');
+  }
+}
+
+function is_int(n) {
+   return ((typeof n==='number')&&(n%1===0));
+}
+
+function get_column_width(n){
+  var grid_content_width  = sanitize_number($('#desktop .grid-content').width());
+  var gutter_width        = sanitize_number($('#gutter-width .val').text());
+  return (grid_content_width - (gutter_width * (n - 1))) / n;
+}
+
+function multiply_column_width(w,n) {
+  var gutter_width        = sanitize_number($('#gutter-width .val').text());
+  return (w * n + (gutter_width * (n - 1)));
+}
 
 jQuery.fn.update_layouts = function() {
   var gutter_width              = sanitize_number($('#gutter-width .val').text());
@@ -79,6 +156,7 @@ jQuery.fn.update_layouts = function() {
   $('#mobile-portrait').create_grid({'is_auto_device_width' : is_auto_device_width});
 
   $('.margin').width(margin_width);
+  grid_layout();
   update_info();
   return this;
 };
