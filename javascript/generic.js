@@ -163,7 +163,7 @@ jQuery.fn.update_layouts = function() {
 
 jQuery.fn.increase_width = function() {
   var step = 1;
-  if($(this).parents('.colgroup').hasClass('widths')) step = 2;
+  if($(this).parents('.colgroup').hasClass('widths') && $(this).parent().attr('id') != 'margin-width') step = 2;
   $(this).text( sanitize_number($(this).text()) + step)
   $('#desktop').update_layouts()
   update_info();
