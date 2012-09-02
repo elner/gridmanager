@@ -230,6 +230,22 @@ $(document).ready(function () {
     return false;
   });
 
+  $(".widths .val").focus(function() {
+    $(this).addClass('focus')
+    return false;
+  })
+  .keyup(function() {
+    var val = sanitize_number($(this).text());
+    if (val < 1) $(this).text('0')
+    $('#desktop').update_layouts()
+    update_info();
+    return false;
+  })
+  .blur(function() {
+    $(this).removeClass('focus')
+    return false;
+  });
+
   is_auto_device_width();
 
   $('#auto-device-width').click( function() {
