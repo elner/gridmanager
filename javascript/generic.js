@@ -1,3 +1,9 @@
+function round_dec(num, dec) {
+  var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+  return result;
+}
+
+
 jQuery.fn.create_grid = function(options) {
   var settings                    = {'is_auto_device_width' : false};
   options                         = $.extend( settings, options );
@@ -88,14 +94,16 @@ function grid_layout(){
   // Two col
   var col_two_width = get_column_width(2);
   if(is_int(col_two_width)) {
+    var percent = (col_two_width / grid_content_width) * 100;
     $('.colgroup.two').show();
-    $('.colgroup.two .col').width(col_two_width).text(col_two_width+'px');
+    $('.colgroup.two .col').width(col_two_width).text(col_two_width+'px' + ' (' +percent+'%)');
   }
   // Three col
   var col_three_width = get_column_width(3);
   if(is_int(col_three_width)) {
+    var percent = (col_three_width / grid_content_width) * 100;
     $('.colgroup.three').show();
-    $('.colgroup.three .col').width(col_three_width).text(col_three_width+'px');
+    $('.colgroup.three .col').width(col_three_width).text(col_three_width+'px' + ' (' +percent+'%)');
 
     $('.colgroup.third').show();
     var two_three = multiply_column_width(col_three_width,2);
@@ -105,13 +113,15 @@ function grid_layout(){
   // Four col
   var col_four_width = get_column_width(4);
   if(is_int(col_four_width)) {
+    var percent = (col_four_width / grid_content_width) * 100;
     $('.colgroup.four').show();
-    $('.colgroup.four .col').width(col_four_width).text(col_four_width+'px');
+    $('.colgroup.four .col').width(col_four_width).text(col_four_width+'px' + ' (' +percent+'%)');
 
     $('.colgroup.fourth').show();
     var tree_four = multiply_column_width(col_four_width,3);
     $('.colgroup.fourth .col.one-four').css({ "width": col_four_width+"px" }).text(col_four_width+'px');
-    $('.colgroup.fourth .col.three-four').css({ "width": tree_four+"px" }).text(tree_four+'px');
+    var percent = (tree_four / grid_content_width) * 100;
+    $('.colgroup.fourth .col.three-four').css({ "width": tree_four+"px" }).text(tree_four+'px'+ ' (' +percent+'%)');
   }
   // Six col
   var col_six_width = get_column_width(6);
@@ -146,6 +156,9 @@ jQuery.fn.update_layouts = function() {
   var col_width                 = sanitize_number($('#col-width .val').text());
   var margin_width              = sanitize_number($('#margin-width .val').text());
   var is_auto_device_width      = $('#auto-device-width').is(':checked');
+
+  $('#simplest #gutter-width').text(gutter_width);
+  $('#simplest #margin-width').text(margin_width);
 
   $('#grid-container .col').width(col_width);
   $('.gutter').width(gutter_width);
@@ -192,6 +205,10 @@ function is_auto_device_width() {
 };
 
 function update_info() {
+
+  $('#simplest #grid-content').text($('#desktop.grid-container').width());
+  $('#simplest #grid-columns').text($('#desktop-columns .val').text());
+
   $('#desktop .width-grid-container').text(  $('#desktop.grid-container').width() );
   $('#desktop .width-grid-content').text(  $('#desktop .grid-content').width() );
 
@@ -252,5 +269,11 @@ $(document).ready(function () {
     is_auto_device_width();
     $('#desktop').update_layouts()
   });
+
+  $('#toggle-simplest').click( function(e) {
+    e.preventDefault();
+    $('#simplest').toggle();
+  });
+
 
 });

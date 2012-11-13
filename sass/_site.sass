@@ -31,6 +31,7 @@ header
   +radial-gradient(50% 20%, circle cover, rgba(0,0,0, 0), rgba(0,0,0, .1) 80%)
   padding: 1em 0
   overflow: hidden
+  position:  relative
   h1
     font-weight: normal
     text-transform: uppercase
@@ -241,3 +242,18 @@ article
       line-height:  1.4em
       .unit
         font-size: .8em
+
+#simplest
+  +border-radius(3px)
+  +box-shadow(0 5px 10px rgba(0,0,0, .2))
+  z-index: 200
+  display: none
+  position:  absolute
+  width:  220px
+  left: 50%
+  top: 2%
+  margin-left:  -260px
+  background-color:  white
+  padding: 20px
+  white-space:  pre
+  text-align:  left

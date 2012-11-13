@@ -1,4 +1,3 @@
-@charset "utf-8";
 @import url(http://fonts.googleapis.com/css?family=IM+Fell+English+SC|Ubuntu);
 /* line 26, ../sass/_buttons.sass */
 .silver-bullet {
@@ -25,9 +24,9 @@
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   border-bottom-left-radius: 25px;
-  -webkit-box-shadow: inset 0 1px 0 0 white, 0 1px 0 0 #838383, 0 -1px 2px 1px #f5f5f5;
-  -moz-box-shadow: inset 0 1px 0 0 white, 0 1px 0 0 #838383, 0 -1px 2px 1px #f5f5f5;
-  box-shadow: inset 0 1px 0 0 white, 0 1px 0 0 #838383, 0 -1px 2px 1px #f5f5f5;
+  -webkit-box-shadow: inset 0 1px 0 0 white, 0 1px 0 0 #838383, 0 -1px 2px 1px whitesmoke;
+  -moz-box-shadow: inset 0 1px 0 0 white, 0 1px 0 0 #838383, 0 -1px 2px 1px whitesmoke;
+  box-shadow: inset 0 1px 0 0 white, 0 1px 0 0 #838383, 0 -1px 2px 1px whitesmoke;
 }
 /* line 19, ../sass/_buttons.sass */
 .silver-bullet:hover {
@@ -94,9 +93,10 @@ header {
   background-image: radial-gradient(50% 20%, circle cover, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1) 80%);
   padding: 1em 0;
   overflow: hidden;
+  position: relative;
   text-align: center;
 }
-/* line 34, ../sass/_site.sass */
+/* line 35, ../sass/_site.sass */
 #grid-manager h1 {
   font-weight: normal;
   text-transform: uppercase;
@@ -104,7 +104,7 @@ header {
   line-height: 1.2em;
   letter-spacing: 0.1em;
 }
-/* line 41, ../sass/_site.sass */
+/* line 42, ../sass/_site.sass */
 #grid-manager .colgroup {
   border-style: none;
   padding: 0;
@@ -122,7 +122,7 @@ header {
 #grid-manager .colgroup:after {
   clear: both;
 }
-/* line 48, ../sass/_site.sass */
+/* line 49, ../sass/_site.sass */
 #grid-manager .colgroup h4 {
   text-transform: uppercase;
   font-weight: normal;
@@ -132,18 +132,18 @@ header {
   left: -50%;
   background: transparent url(../images/dashes.png) no-repeat center center;
 }
-/* line 56, ../sass/_site.sass */
+/* line 57, ../sass/_site.sass */
 #grid-manager .colgroup .col {
   display: inline-block;
   position: relative;
   left: -50%;
   margin: 0 5px;
 }
-/* line 61, ../sass/_site.sass */
+/* line 62, ../sass/_site.sass */
 #grid-manager .colgroup .col p {
   margin: 0;
 }
-/* line 63, ../sass/_site.sass */
+/* line 64, ../sass/_site.sass */
 #grid-manager .colgroup .col p.label {
   font-size: 0.6em;
   text-align: center;
@@ -151,19 +151,19 @@ header {
   text-shadow: 0 1px 0 white;
   padding-bottom: 0.3em;
 }
-/* line 69, ../sass/_site.sass */
+/* line 70, ../sass/_site.sass */
 #grid-manager .colgroup .col p.label .decrease {
   margin-right: 0.3em;
 }
-/* line 71, ../sass/_site.sass */
+/* line 72, ../sass/_site.sass */
 #grid-manager .colgroup .col p.label .increase {
   margin-left: 0.2em;
 }
-/* line 73, ../sass/_site.sass */
+/* line 74, ../sass/_site.sass */
 #grid-manager .colgroup .col p.label .unit {
   font-size: 0.9em;
 }
-/* line 75, ../sass/_site.sass */
+/* line 76, ../sass/_site.sass */
 #grid-manager .colgroup .col p.val {
   color: #463f4c;
   padding: 0 1em 0.1em 1em;
@@ -176,40 +176,40 @@ header {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-/* line 83, ../sass/_site.sass */
+/* line 84, ../sass/_site.sass */
 #grid-manager .colgroup .col p.val.focus {
   background-color: rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2) inset;
 }
-/* line 86, ../sass/_site.sass */
+/* line 87, ../sass/_site.sass */
 #grid-manager .colgroup.columns {
   margin-top: 0.8em;
 }
-/* line 88, ../sass/_site.sass */
+/* line 89, ../sass/_site.sass */
 #grid-manager .colgroup.columns h4 {
   margin-bottom: 0.4em;
 }
-/* line 90, ../sass/_site.sass */
+/* line 91, ../sass/_site.sass */
 #grid-manager .colgroup.columns p.val {
   font-size: 2em;
 }
-/* line 92, ../sass/_site.sass */
+/* line 93, ../sass/_site.sass */
 #grid-manager input[type="checkbox"] {
   margin-top: 20px;
 }
-/* line 94, ../sass/_site.sass */
+/* line 95, ../sass/_site.sass */
 #grid-manager .label {
   font-size: 0.7em;
 }
 
-/* line 97, ../sass/_site.sass */
+/* line 98, ../sass/_site.sass */
 .hr {
   clear: both;
 }
 
-/* line 100, ../sass/_site.sass */
+/* line 101, ../sass/_site.sass */
 .grid-container {
   background-color: #51788b;
   margin: 50px auto 0 auto;
@@ -222,7 +222,7 @@ header {
   border-bottom-left-radius: 0;
   zoom: 1;
 }
-/* line 105, ../sass/_site.sass */
+/* line 106, ../sass/_site.sass */
 .grid-container .info-box {
   clear: both;
   margin: 0;
@@ -234,7 +234,7 @@ header {
   height: 20px;
   line-height: 20px;
 }
-/* line 115, ../sass/_site.sass */
+/* line 116, ../sass/_site.sass */
 .grid-container .info-box .unit {
   font-size: 0.8em;
 }
@@ -247,7 +247,7 @@ header {
 .grid-container:after {
   clear: both;
 }
-/* line 118, ../sass/_site.sass */
+/* line 119, ../sass/_site.sass */
 .grid-container .col {
   background-color: #84b5cc;
   height: 30px;
@@ -258,11 +258,11 @@ header {
   color: #51788b;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
-/* line 127, ../sass/_site.sass */
+/* line 128, ../sass/_site.sass */
 .grid-container .margin.col {
   background-color: transparent;
 }
-/* line 129, ../sass/_site.sass */
+/* line 130, ../sass/_site.sass */
 .grid-container .grid-content {
   display: inline;
   float: left;
@@ -278,12 +278,12 @@ header {
 .grid-container .grid-content:after {
   clear: both;
 }
-/* line 135, ../sass/_site.sass */
+/* line 136, ../sass/_site.sass */
 .grid-container .grid-content .gutter {
   background-color: #acd4e4;
 }
 
-/* line 138, ../sass/_site.sass */
+/* line 139, ../sass/_site.sass */
 #grid-layout {
   position: relative;
   top: -430px;
@@ -307,7 +307,7 @@ header {
 #grid-layout:after {
   clear: both;
 }
-/* line 146, ../sass/_site.sass */
+/* line 147, ../sass/_site.sass */
 #grid-layout .info-box {
   clear: both;
   margin: 0;
@@ -319,16 +319,16 @@ header {
   height: 30px;
   line-height: 30px;
 }
-/* line 156, ../sass/_site.sass */
+/* line 157, ../sass/_site.sass */
 #grid-layout .info-box .unit {
   font-size: 0.8em;
 }
-/* line 158, ../sass/_site.sass */
+/* line 159, ../sass/_site.sass */
 #grid-layout .grid-content {
   background-color: #acd4e4;
   float: left;
 }
-/* line 161, ../sass/_site.sass */
+/* line 162, ../sass/_site.sass */
 #grid-layout .grid-content .colgroup {
   margin-top: 2px;
   zoom: 1;
@@ -342,15 +342,15 @@ header {
 #grid-layout .grid-content .colgroup:after {
   clear: both;
 }
-/* line 164, ../sass/_site.sass */
+/* line 165, ../sass/_site.sass */
 #grid-layout .colgroup.one {
   margin: 0;
 }
-/* line 166, ../sass/_site.sass */
+/* line 167, ../sass/_site.sass */
 #grid-layout .colgroup.one .info-box {
   background-color: #84b5cc;
 }
-/* line 168, ../sass/_site.sass */
+/* line 169, ../sass/_site.sass */
 #grid-layout .col {
   overflow: hidden;
   float: left;
@@ -362,12 +362,12 @@ header {
   color: #51788b;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
-/* line 178, ../sass/_site.sass */
+/* line 179, ../sass/_site.sass */
 #grid-layout .margin.col {
   background-color: transparent;
 }
 
-/* line 182, ../sass/_site.sass */
+/* line 183, ../sass/_site.sass */
 article {
   zoom: 1;
   margin-bottom: 40px;
@@ -383,7 +383,7 @@ article:after {
   clear: both;
 }
 
-/* line 187, ../sass/_site.sass */
+/* line 188, ../sass/_site.sass */
 #device-widths {
   position: relative;
   top: -460px;
@@ -393,7 +393,7 @@ article:after {
   margin: 0 auto;
   border-bottom: 1px solid rgba(255, 0, 0, 0.15);
 }
-/* line 195, ../sass/_site.sass */
+/* line 196, ../sass/_site.sass */
 #device-widths p {
   background: url(../images/device-width-left.png) no-repeat 0 0, url(../images/device-width-right.png) no-repeat 100% 0, url(../images/device-width-middle.png) repeat-x 0 0;
   position: absolute;
@@ -406,34 +406,34 @@ article:after {
   color: rgba(0, 0, 0, 0.6);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
-/* line 207, ../sass/_site.sass */
+/* line 208, ../sass/_site.sass */
 #device-widths p.width-1024 {
   width: 1024px;
   top: 0;
   margin-left: -512px;
 }
-/* line 211, ../sass/_site.sass */
+/* line 212, ../sass/_site.sass */
 #device-widths p.width-768 {
   width: 768px;
   top: 120px;
   height: 360px;
   margin-left: -384px;
 }
-/* line 216, ../sass/_site.sass */
+/* line 217, ../sass/_site.sass */
 #device-widths p.width-480 {
   width: 480px;
   top: 240px;
   height: 240px;
   margin-left: -240px;
 }
-/* line 221, ../sass/_site.sass */
+/* line 222, ../sass/_site.sass */
 #device-widths p.width-320 {
   width: 320px;
   top: 360px;
   height: 120px;
   margin-left: -160px;
 }
-/* line 226, ../sass/_site.sass */
+/* line 227, ../sass/_site.sass */
 #device-widths p i {
   position: absolute;
   border-top-left-radius: 0;
@@ -454,9 +454,31 @@ article:after {
   font-size: 12px;
   line-height: 1.4em;
 }
-/* line 242, ../sass/_site.sass */
+/* line 243, ../sass/_site.sass */
 #device-widths p i .unit {
   font-size: 0.8em;
+}
+
+/* line 246, ../sass/_site.sass */
+#simplest {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 200;
+  display: none;
+  position: absolute;
+  width: 220px;
+  left: 50%;
+  top: 2%;
+  margin-left: -260px;
+  background-color: white;
+  padding: 20px;
+  white-space: pre;
+  text-align: left;
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -493,7 +515,7 @@ article:after {
     font-size: 2em;
   }
 }
-@media all and (max-device-width: 480px) and (orientation:landscape) {
+@media all and (max-device-width: 480px) and (orientation: landscape) {
   /* line 2, ../sass/_media-queries.sass */
   #wrapper, #header, article {
     width: 1024px;
@@ -505,7 +527,7 @@ article:after {
     owerflow: hidden;
   }
 }
-@media all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+@media all and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
   /* line 2, ../sass/_media-queries.sass */
   #wrapper, #header, article {
     width: 1024px;
