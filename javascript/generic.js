@@ -162,6 +162,18 @@ function update_layout_cols(content_width_px, gutter_width_perc, nr_of_columns, 
    }
 }
 
+
+function display_sample_grid(o) {
+  var grid = $('option:selected',o).val();
+  var grid_value = grid.split(",")
+  $('#content-width .val').text(grid_value[0]);
+    $('#margin-width .val').text(grid_value[1]);
+  $('#gutter-width .val').text(grid_value[2]);
+  $('#nr-of-columns .val').text(grid_value[3]);
+  create_grid();
+}
+
+
 $(document).ready(function () {
 
   $('body').update_info();
@@ -195,5 +207,10 @@ $(document).ready(function () {
      $(this).removeClass('focus')
      return false;
    });
+   
+   
+   $('#grid-samples').change(function() {
+     display_sample_grid(this);
+   })
 
 });
