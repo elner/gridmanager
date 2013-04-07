@@ -16,205 +16,113 @@
     <div id="container">
     <div id="wrapper">
     <header>
+      <div class="content">
         <div id="grid-manager" >
-          <h1>Grid manager</h1>
+          <h1>Simplest Grid manager</h1>
           <div class="colgroup widths">
-            <h4>Width in px</h4>
-            <div class="col" id="margin-width">
-              <p class="val" contenteditable="true">10</p>
+            <h4>Settings</h4>
+            <div class="col" id="content-width" data-steps="1">
+              <p class="val" contenteditable="true">930</p>
+              <p class="label">
+                <a href="#" class="decrease silver-bullet">&#45;</a>
+                Content
+                <a href="#" class="increase silver-bullet">&#43;</a>
+              </p>
+            </div>
+            <div class="col" id="margin-width" data-steps="2">
+              <p class="val" contenteditable="true">30</p>
               <p class="label">
                 <a href="#" class="decrease silver-bullet">&#45;</a>
                 Margin
                 <a href="#" class="increase silver-bullet">&#43;</a>
               </p>
             </div>
-            <div class="col" id="gutter-width">
-              <p class="val" contenteditable="true">20</p>
+            <div class="col" id="gutter-width" data-steps="1">
+              <p class="val" contenteditable="true">30</p>
               <p class="label">
                 <a href="#" class="decrease silver-bullet">&#45;</a>
                 Gutter
                 <a href="#" class="increase silver-bullet">&#43;</a>
               </p>
             </div>
-            <div class="col" id="col-width">
-              <p class="val" contenteditable="true">40</p>
+            <div class="col" id="nr-of-columns" data-steps="1">
+              <p class="val" contenteditable="true">12</p>
               <p class="label">
                 <a href="#" class="decrease silver-bullet">&#45;</a>
                 Column
                 <a href="#" class="increase silver-bullet">&#43;</a>
               </p>
-<div id="simplest">$simplest-grid-content  : <b id="grid-content"></b>px
-$simplest-gutter-width  : <b id="gutter-width"></b>px
-$simplest-margin-width  : <b id="margin-width"></b>px
-$simplest-grid-columns  : <b id="grid-columns"></b></div>
             </div>
           </div>
-          <div class="hr"></div>
-          <div class="colgroup columns">
-            <h4>Nr of columns</h4>
-            <div class="col" id="desktop-columns">
-              <p class="val">0</p>
-              <p class="label">
-                <a href="#" class="decrease silver-bullet">&#45;</a>
-                1024<span class="unit">px</span>
-                <a href="#" class="increase silver-bullet">&#43;</a>
-              </p>
-            </div>
-            <div class="col" id="tablet-portrait-columns">
-              <p class="val">0</p>
-              <p class="label">
-                <a href="#" class="decrease silver-bullet">&#45;</a>
-                768<span class="unit">px</span>
-                <a href="#" class="increase silver-bullet">&#43;</a>
-              </p>
-            </div>
-            <div class="col" id="mobile-landscape-columns">
-              <p class="val">0</p>
-              <p class="label">
-                <a href="#" class="decrease silver-bullet">&#45;</a>
-                480<span class="unit">px</span>
-                <a href="#" class="increase silver-bullet">&#43;</a>
-              </p>
-            </div>
-            <div class="col" id="mobile-portrait-columns">
-              <p class="val">3</p>
-              <p class="label">
-                <a href="#" class="decrease silver-bullet">&#45;</a>
-                320<span class="unit">px</span>
-                <a href="#" class="increase silver-bullet">&#43;</a>
-              </p>
-            </div>
-          </div>
-          <div class="hr"></div>
-          <p>
-            <input type="checkbox" checked="checked" name="auto-device-width" value="" id="auto-device-width">
-            <label for="auto-device-width">Auto calculate columns</label>
-            <a href="#" id="toggle-simplest">Simplest..</a>
-          </p>
         </div>
+        <p id="toggle-simplest">
+          <a href="#" >Simplest..</a> 
+        </p>
+
+<div id="simplest">$simplest-grid-content  : <b id="simplest-grid-content"></b>px
+$simplest-gutter-width  : <b id="simplest-gutter-width"></b>px
+$simplest-margin-width  : <b id="simplest-margin-width"></b>px
+$simplest-grid-columns  : <b id="simplest-grid-columns"></b></div>
+
+      </div>
     </header>
 
     <article>
 
-        <div id="desktop" class="grid-container">
-          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
-          <div class="colgroup">
-            <div class="margin col">&nbsp;</div>
-              <div class="grid-content">
-                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
-                <div class="colgroup">
+      <div id="grid-wrapper">
+        <div class="info-box"><span class="width-grid-wrapper"></span><span class="unit">px</span></div>
+        <div class="colgroup">
+            <div id="grid-content" class="grid-content">
+              <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
+              <div class="colgroup">
+              </div>
+            </div>
+
+            <div id="layout-content" class="grid-content">
+              <div class="layout-samples grid-container">
+                <!-- Layout columns -->
+              </div>
+              <!-- Sample layout alternatives -->
+              <div class="grid-container">
+                <div class="colgroup two">
+                  <div class="col first"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col last"></div>
+                </div>
+                <div class="colgroup three">
+                  <div class="col first"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col last"></div>
+                </div>
+                <div class="colgroup four">
+                  <div class="col first"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col last"></div>
+                </div>
+                <div class="colgroup six">
+                  <div class="col first"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col"></div>
+                  <div class="gutter col">&nbsp;</div>
+                  <div class="col last"></div>
                 </div>
               </div>
-            <div class="margin col">&nbsp;</div>
-          </div>
-        </div>
+            </div><!-- /#layout-content -->
 
-        <div id="tablet-portrait" class="grid-container">
-          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
-          <div class="colgroup">
-            <div class="margin col">&nbsp;</div>
-              <div class="grid-content">
-                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
-                <div class="colgroup">
-                </div>
-              </div>
-            <div class="margin col">&nbsp;</div>
-          </div>
         </div>
-
-        <div id="mobile-landscape" class="grid-container">
-          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
-          <div class="colgroup">
-            <div class="margin col">&nbsp;</div>
-              <div class="grid-content">
-                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
-                <div class="colgroup">
-                </div>
-              </div>
-            <div class="margin col">&nbsp;</div>
-          </div>
-        </div>
-
-        <div id="mobile-portrait" class="grid-container">
-          <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
-          <div class="colgroup">
-            <div class="margin col">&nbsp;</div>
-              <div class="grid-content">
-                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
-                <div class="colgroup">
-                </div>
-              </div>
-            <div class="margin col">&nbsp;</div>
-          </div>
-        </div>
-
-      <div id="device-widths">
-        <p class="width-1024"><i><span>1024</span><span class="unit">px</span></i></p>
-        <p class="width-768"><i><span>768</span><span class="unit">px</span></i></p>
-        <p class="width-480"><i><span>480</span><span class="unit">px</span></i></p>
-        <p class="width-320"><i><span>320</span><span class="unit">px</span></i></p>
       </div>
-<!-- first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth -->
-      <div id="grid-layout">
-        <div class="info-box"><span class="width-grid-container"></span><span class="unit">px</span></div>
-          <div class="colgroup">
-            <div class="margin col">&nbsp;</div>
-            <div class="grid-content">
-              <div class="colgroup one">
-                <div class="info-box"><span class="width-grid-content"></span><span class="unit">px</span></div>
-              </div>
-              <div class="colgroup sixth">
-                <div class="col one-six first"></div>
-                <div class="col five-six last"></div>
-              </div>
-              <div class="colgroup fourth">
-                <div class="col one-four first"></div>
-                <div class="col three-four last"></div>
-              </div>
-              <div class="colgroup third">
-                <div class="col one-three first"></div>
-                <div class="col two-three last"></div>
-              </div>
-              <div class="colgroup third">
-                <div class="col two-three first"></div>
-                <div class="col one-three last"></div>
-              </div>
-              <div class="colgroup fourth">
-                <div class="col three-four first"></div>
-                <div class="col one-four last"></div>
-              </div>
-              <div class="colgroup sixth">
-                <div class="col five-six first"></div>
-                <div class="col one-six last"></div>
-              </div>
-              <div class="colgroup two">
-                <div class="col first"></div>
-                <div class="col last"></div>
-              </div>
-              <div class="colgroup three">
-                <div class="col first"></div>
-                <div class="col"></div>
-                <div class="col last"></div>
-              </div>
-              <div class="colgroup four">
-                <div class="col first"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col last"></div>
-              </div>
-              <div class="colgroup six">
-                <div class="col first"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col"></div>
-                <div class="col last"></div>
-              </div>
-            </div><!-- /.grid-content -->
-            <div class="margin col">&nbsp;</div>
-          </div><!-- /.colgroup -->
-      </div><!-- /#grid-layout -->
-
     </article>
 
     </div><!-- /#wrapper -->
