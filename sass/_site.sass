@@ -16,26 +16,37 @@ body
   font-family: 'Ubuntu', sans-serif
   margin: 0
 
+html, body
+  margin: 0
+  padding: 0
+
 h1
   text-shadow: 0 2px 0 rgba(255,255,255, 1)
   color: #332b3a
-h1, h2, h3, h4, form input[type=number], .control-group span.col-width
+h1, h2, h3, h4, p.val
   font-family: 'IM Fell English SC', serif
-  text-shadow: 0 1px 0 rgba(255,255,255, 1)
+  text-shadow: 0 1px 0 rgba(255,255,255, .6)
 header
   background: transparent url(../images/dashed.png) repeat-x left 98%
-  padding: 1em 0
   border-bottom: 1px solid rgba(0,0,0, .12)
-  +box-shadow(0,1,20, rgba(0,0,0, .6))
-form
+  +box-shadow(0 1px 20px rgba(0,0,0, .6))
+  .content
+    +radial-gradient(50% 20%, circle cover, rgba(0,0,0, 0), rgba(0,0,0, .1) 80%)
+    padding-bottom: 30px
+
+#grid-manager
+  
+  padding: 1em 0
+  overflow: hidden
+  position:  relative
   h1
     font-weight: normal
     text-transform: uppercase
-    margin: 0 .5em 0
+    margin: 0
     line-height: 1.2em
     letter-spacing: .1em
   text-align: center
-  fieldset
+  .colgroup
     border-style: none
     padding: 0
     position: relative
@@ -45,98 +56,60 @@ form
     h4
       text-transform: uppercase
       font-weight: normal
-      margin: 1em 0 .3em
+      margin: 1em 0 0
       font-size: 1em
       position: relative
       left: -50%
       background: transparent url(../images/dashes.png) no-repeat center center
-    .control-group
+    .col
       display: inline-block
       position: relative
       left: -50%
       margin: 0 5px
-      label
-        display: block
-        font-size: .6em
-        text-align: center
-        color: rgb(140,140,140)
-        text-shadow: 0 1px 0 rgba(255,255,255, 1)
-        .unit
-          font-size: .9em
-      input[type=number]
-        background-color: rgba(255,255,255, .2)
-        border:
-          style: none
-          right: 1px solid rgba(255,255,255, .8)
-          bottom: 1px solid rgba(255,255,255, .8)
-        +box-shadow(2,2,4, rgba(0,0,0, .6), inset)
-        &:focus
-          background-color: rgba(255,255,255, .5)
-          color: black
-      input, span.col-width
-        color: #463F4C
-        width: 2.5em
-        text-align: center
-        font-size: 2.8em
-        line-height: 1.1em
-        +border-radius(32)
-        display: block
-        outline: none
-        &.disabled
-          border-style: none
-          background-color: transparent
-      span.col-width
-        padding: .3em .1em
-
+      p
+        margin: 0
+        &.label
+          font-size: .6em
+          text-align: center
+          color: rgb(110,110,110)
+          text-shadow: 0 1px 0 rgba(255,255,255, 1)
+          padding-bottom: .3em
+          .decrease
+            margin-right: .3em
+          .increase
+            margin-left: .2em
+          .unit
+            font-size: .9em
+        &.val
+          color: #463F4C
+          padding: 0 1em .1em 1em
+          text-align: center
+          font-size: 2.8em
+          line-height: 1.1em
+          outline: 0
+          +border-radius(5px)
+          &.focus
+            background-color: rgba(255,255,255, .3)
+            +box-shadow(0 1px 0 rgba(0,0,0,.2) inset)
     &.columns
-      input, span.col-width
+      margin-top: .8em
+      h4
+        margin-bottom: .4em
+      p.val
         font-size: 2em
-        width: 2.5em
   input[type="checkbox"]
     margin-top: 20px
-  label
+  .label
     font-size: .7em
 
 .hr
   clear: both
+  background: transparent url(../images/dashed.png) repeat-x center top
+  min-height: 8px
+  margin-top: -8px
 
-.grid-container
-  background-color: $grid-color-dark
-  margin: 50px auto 0 auto
-  +box-shadow(0,10,10,rgba(0,0,0, .2))
-  +border-radius(5,5,0,0)
-  .info-box
-    clear: both
-    margin: 0
-    font-size: .7em
-    text-align: center
-    color: $grid-color-x-light
-    text-shadow: 0 -1px 0 rgba(0,0,0, .2)
-    padding: 0
-    height: 20px
-    line-height: 20px
-    .unit
-      font-size: .8em
-  +clearfix
-  .col
-    background-color: $grid-color-medium
-    height: 30px
-    line-height: 30px
-    float: left
-    text-align: center
-    font-size: .7em
-    color: $grid-color-dark
-    text-shadow: 0 1px 0 rgba(255,255,255, .2)
-  .margin.col
-    background-color: transparent
-  .grid-content
-    display: inline
-    float: left
-    +clearfix
-    background-color: $grid-color-medium
-    .info-box
-    .gutter
-      background-color: $grid-color-light  //#bbd887
+
+
 
 article
   +clearfix
@@ -184,7 +157,7 @@ article
       margin-left: -#{(320/2)}px
     i
       position: absolute
-      +border-radius(0,0,3,3)
+      +border-radius(0 0 3px 3px)
       top: 5px
       left: 50%
       margin-left: -40px
@@ -200,3 +173,73 @@ article
       line-height:  1.4em
       .unit
         font-size: .8em
+//- - - - -  -
+#toggle-simplest
+  text-align: center
+  text-shadow: 0 1px 0 rgba(255,255,255, .6)
+  font-size: 12px
+  a:hover
+    color: #463F4C
+  a, a:visited
+    color: rgb(150,150,150)
+    text-decoration: none
+#simplest
+  display: none
+  font-family: monospace
+  font-size: 14px
+  white-space:  pre
+  text-align:  left
+  width: 300px
+  padding: 15px
+  margin: 0 auto
+  +box-shadow(0 1px 2px rgba(0,0,0, .2) inset, 0 1px 0 rgba(255,255,255, .6))
+  +border-radius(5px)
+  background-color: rgba(255,255,255,.2)
+
+
+
+
+#grid-wrapper
+  background-color: $grid-color-dark
+  margin:  0 auto
+  +box-shadow(0 10px 10px rgba(0,0,0, .2))
+  +border-radius(5px 5px 0 0)
+  .info-box
+    clear: both
+    margin: 0
+    font-size: .7em
+    text-align: center
+    color: $grid-color-x-light
+    text-shadow: 0 -1px 0 rgba(0,0,0, .2)
+    padding: 0
+    height: 30px
+    line-height: 30px
+    .unit
+      font-size: .8em
+  .grid-content
+    .info-box
+      background-color: $grid-color-medium
+  .colgroup
+    +clearfix
+    .col
+      background-color: $grid-color-medium
+      height: 28px
+      padding-top: 2px
+      //line-height: 30px
+      float: left
+      text-align: center
+      font-size: .7em
+      color: $grid-color-dark
+      text-shadow: 0 1px 0 rgba(255,255,255, .2)
+      +ellipsis
+      &.margin
+      &.gutter
+        background-color: $grid-color-light
+
+.grid-container
+  background-color: $grid-color-light
+  +clearfix
+#layout-content
+  .layout-samples
+  .colgroup
+    margin-top: 2px

@@ -1,142 +1,199 @@
-jQuery.fn.create_grid = function(options) {
-  var settings                    = {'is_auto_device_width' : false};
-  options                         = $.extend( settings, options );
-  var o                           = options;
-  var this_id                     = $(this).attr('id');
-  var margin_width                = parseInt($('#margin-width').val());
-  var gutter_width                = parseInt($('#gutter-width').val());
-  var col_width                   = parseInt($('#col-width').val());
-  var cont                        = [];
-  var grid_content_width          = 0;
-  var gutter                      = '<div style="width:'+gutter_width+'px;" class="gutter col">&nbsp;</div>';
+$.fn.update_info = function() {
 
-  if(o.is_auto_device_width){
-    // Set max width
-    switch(this_id){
-      case 'desktop':
-        var max_width = 1024;
-        break;
-      case 'tablet-portrait':
-        var max_width = 768;
-        break;
-      case 'mobile-landscape':
-        var max_width = 480;
-        break;
-      case 'mobile-portrait':
-        var max_width = 320;
-        break;
-    }
-    var grid_width = (margin_width * 2);
-    var columns = 0;
-    // Calculate max nr of columns inside device width
-    while (grid_width<max_width){
-      columns++;
-      grid_width += col_width;
-      if (grid_width>max_width){
-        columns--;
-        break;
-      }
-      grid_width += gutter_width;
-    }
+  var plugin = this;
 
+  $(window).bind("load", function() {
+    plugin.update();
+    $(window).resize(plugin.update);
+  });
 
-  $('#'+this_id+'-columns').prev().text(columns)
+  plugin.update = function() {
+    // Update wrapper width
+    $('.width-grid-wrapper').text($('#grid-wrapper').width());
+    // Update content width
+    $('.width-grid-content').text( Math.round(parseInt($('#grid-content').width())) );
+    // Grid col width
+    // Math.round(parseInt($('#grid-content .col:not(.gutter)').width()))
+  }
+
+ return this;
+}
+
+jQuery.fn.increase_width = function() {
+  var step = $(this).parent().data('steps');
+  $(this).text( sanitize_number($(this).text()) + step);
+  create_grid();
+  return this;
+};
+
+jQuery.fn.decrease_width = function() {
+  var step = $(this).parent().data('steps');
+  var val = sanitize_number($(this).text());
+  if ((val - step) < 0) return this
+  $(this).text(val - step)
+  create_grid();
+  return this;
+};
+
+function sanitize_number(s) {
+  if( isNaN(parseInt(s)) || parseInt(s) < 0) {
+    return 0;
   }
   else {
-    var columns = parseInt($('#'+this_id+'-columns').val());
+    return parseInt(s);
+  }
+}
+
+function is_int(n) {
+   return ((typeof n==='number')&&(n%1===0));
+}
+
+function get_column_width(n){
+  var grid_content_width  = sanitize_number($('#content-width .val').text());
+  var gutter_width        = sanitize_number($('#gutter-width .val').text());
+  return (grid_content_width - (gutter_width * (n - 1))) / n;
+}
+
+function create_grid(){
+
+  var content_width_px  = sanitize_number($('#content-width .val').text());
+  var gutter_width_px   = sanitize_number($('#gutter-width .val').text());
+  var margin_width_px   = sanitize_number($('#margin-width .val').text());
+  var nr_of_columns     = sanitize_number($('#nr-of-columns .val').text());
+  
+  var sum_gutter        = (((gutter_width_px * nr_of_columns) - gutter_width_px))
+  var wrapper_width_px  = content_width_px + (margin_width_px * 2)
+  
+  var one_col_width_px  = ((content_width_px - sum_gutter) / nr_of_columns);
+  
+  var margin_width_perc = ( margin_width_px / wrapper_width_px )  * 100;
+  var gutter_width_perc = ( gutter_width_px / content_width_px ) * 100;
+  var col_width_perc    = ( one_col_width_px /  content_width_px )  * 100;
+  
+  var cont              = [];
+  var gutter            = '<div style="width:'+gutter_width_perc+'%;" class="gutter col">&nbsp;</div>';
+
+  // If column width has decimals, return false
+  if(one_col_width_px != Math.floor(one_col_width_px) ){
+    $('#grid-manager .colgroup .col p.val').css('color', '#bd8282');
+    return false;
+  }
+  else if( (nr_of_columns / 3) == Math.floor(nr_of_columns / 3) &&
+      (nr_of_columns / 4) == Math.floor(nr_of_columns / 4) &&
+      (nr_of_columns / 6) == Math.floor(nr_of_columns / 6)){
+    $('#grid-manager .colgroup .col p.val').css('color', '#463f4c'); // #c5a75f
+  }
+  else{
+    $('#grid-manager .colgroup .col p.val').css('color', 'rgb(150,150,150)');
   }
 
-  // Create columns + gutter
-  for (var i = 0;i<columns;i++) {
-    grid_content_width += col_width + gutter_width;
-    // Last column has no gutter on the right side
-    if(i == (columns -1)) {
-      gutter = '';
-      grid_content_width -= gutter_width;
-    }
-    cont.push('<div style="width:'+col_width+'px;" class="col">'+(i+1)+'</div>' + gutter);
+  // Update Simplest settings  - - - - - - - - - 
+  $('#simplest-grid-content').text(content_width_px);
+  $('#simplest-gutter-width').text(gutter_width_px);
+  $('#simplest-margin-width').text(margin_width_px);
+  $('#simplest-grid-columns').text(nr_of_columns);
+
+  // Create columns - - - - - - - - - 
+  for (var i = 0;i<nr_of_columns;i++) {
+   // Last column has no gutter on the right side
+   if(i == (nr_of_columns -1)) {
+     gutter = '';
+   }
+
+   var col_text = (i+1);/*
+   if(nr_of_columns <= 6){
+     col_text = one_col_width_px+'px';
+   } */
+   cont.push('<div style="width:'+col_width_perc+'%;" class="col" title="'+col_text+'">'+col_text+'</div>' + gutter);
   }
-  // Set width to container & print content
-  $('#'+this_id+'-columns').val(columns)
-  $('#'+this_id+'.grid-container').width(grid_content_width + (margin_width * 2))
-  $('#'+this_id+' .grid-content').width(grid_content_width);
-  $('#'+this_id+' .grid-content .colgroup').html(cont.join(''));
-  return this;
-};
 
-jQuery.fn.update_layouts = function() {
-  var gutter_width              = parseInt($('#gutter-width').val());
-  var col_width                 = parseInt($('#col-width').val());
-  var margin_width              = parseInt($('#margin-width').val());
-  var is_auto_device_width      = $('#auto-device-width').is(':checked');
+   var max_width = (content_width_px + (margin_width_px * 2));
+   $('#grid-content .colgroup').html(cont.join(''));
+   $('#grid-wrapper').css('max-width', max_width +'px');
+   $('.grid-content').css('padding-left', margin_width_perc +'%');
+   $('.grid-content').css('padding-right', margin_width_perc +'%');
 
-  $('.col').width(col_width);
-  $('.gutter').width(gutter_width);
+   $('.width-grid-wrapper').text($('#grid-wrapper').width());
+   $('.width-grid-content').text(content_width_px);
 
-  $('#desktop').create_grid({'is_auto_device_width' : is_auto_device_width});
-  $('#tablet-portrait').create_grid({'is_auto_device_width' : is_auto_device_width});
-  $('#mobile-landscape').create_grid({'is_auto_device_width' : is_auto_device_width});
-  $('#mobile-portrait').create_grid({'is_auto_device_width' : is_auto_device_width});
+  // Create Grid Layout - - - - - - - - - 
+  $('#grid-layout').css('max-width', max_width +'px');
+  var gutter    = '<div style="width:'+gutter_width_perc+'%;" class="gutter col">&nbsp;</div>';
+  var cont      = [];
 
-  $('.margin').width(margin_width);
-  update_info();
-  return this;
-};
+  for (var i = 1;i<nr_of_columns;i++) {
 
-function is_auto_device_width() {
-    if ($('#auto-device-width').is(':checked')){
-      $(".columns input").each(function (i) {
-        $(this).hide().parent().prepend('<span class="col-width">'+$(this).val()+'</span>')
-      });
-    }
-    else{
-       $(".columns input").each(function (i) {
-         $('span.col-width', $(this).parent()).hide()
-         $(this).show().val($('span.col-width', $(this).parent()).text());
-         $('span.col-width', $(this).parent()).remove();
-        });
-    }
-};
+    var sum_gutter           = gutter_width_px
+    var col_width_px         = ((one_col_width_px + sum_gutter)  * i) - sum_gutter;
+    var col_width_perc       = ( col_width_px /  content_width_px )  * 100;
+    var right_col_width_px   =  (content_width_px - (col_width_px + sum_gutter));
+    var right_col_width_perc =  (right_col_width_px / content_width_px) * 100
+    var right_col            = '<div style="width:'+right_col_width_perc+'%;" class="col">'+ (nr_of_columns - i) +' col<br />'+right_col_width_px+'px</div>';
 
-function update_info() {
-  $('#desktop .width-grid-container').text(  $('#desktop.grid-container').width() );
-  $('#desktop .width-grid-content').text(  $('#desktop .grid-content').width() );
+    cont.push('<div class="colgroup"><div style="width:'+col_width_perc+'%;" class="col" title="'+col_width_px+'px">'+i +' col<br />'+col_width_px+'px</div>' +gutter+ right_col+'</div>');
+   }
 
-  $('#tablet-portrait .width-grid-container').text(  $('#tablet-portrait.grid-container').width() );
-  $('#tablet-portrait .width-grid-content').text(  $('#tablet-portrait .grid-content').width() );
+  $('#layout-content .layout-samples').empty().prepend(cont.join(''));
 
-  $('#mobile-landscape .width-grid-container').text(  $('#mobile-landscape.grid-container').width() );
-  $('#mobile-landscape .width-grid-content').text(  $('#mobile-landscape .grid-content').width() );
+  // Update Layout Columns - - - - - - - - - 
+  var layout_cols = [ 
+    {"cols": 2, "name": "two"}, 
+    {"cols": 3, "name": "three"}, 
+    {"cols": 4, "name": "four"}, 
+    {"cols": 6, "name": "six"}
+  ];
 
-  $('#mobile-portrait .width-grid-container').text(  $('#mobile-portrait.grid-container').width() );
-  $('#mobile-portrait .width-grid-content').text(  $('#mobile-portrait .grid-content').width() );
-  return this;
-};
+  $.each(layout_cols,function(index, value){ 
+    update_layout_cols(content_width_px, gutter_width_perc, nr_of_columns, value.cols, value.name);
+  });
+
+}
+
+function update_layout_cols(content_width_px, gutter_width_perc, nr_of_columns, cols, col_name){
+  var col_width = get_column_width(cols);
+   if((nr_of_columns / cols) == Math.floor(nr_of_columns / cols)) {
+     var percent = (col_width / content_width_px) * 100;
+     $('.colgroup.'+col_name).show();
+     $('.colgroup.'+col_name+' .col:not(.gutter)').width(percent+'%').html('1/'+cols+'<br />'+col_width+'px');
+     $('.colgroup.'+col_name+' .col.gutter').width(gutter_width_perc+'%');
+   }
+   else{
+     $('.colgroup.'+col_name).hide();
+   }
+}
 
 $(document).ready(function () {
 
-  $('#desktop').update_layouts();
-  update_info();
+  $('body').update_info();
+  create_grid();
 
-  $("form").submit(function() {
-    $('#desktop').update_layouts()
-    return false;
+  $('#toggle-simplest a').click( function(e) {
+    e.preventDefault();
+    $('#simplest').slideToggle();
   });
 
-  $("input[type=number]").click(function() {
-    $('#desktop').update_layouts()
-    return false;
-  });
-  $("input[type=number]").keyup(function() {
-    $('#desktop').update_layouts()
-    return false;
-  });
+  $(".increase").click(function(e) {
+    e.preventDefault();
+     $('#'+$(this).parents('.col').attr('id')+' .val').increase_width()
+   });
 
-  is_auto_device_width();
+   $(".decrease").click(function(e) {
+     e.preventDefault();
+     $('#'+$(this).parents('.col').attr('id')+' .val').decrease_width()
+   });
 
-  $('#auto-device-width').click( function() {
-    is_auto_device_width();
-    $('#desktop').update_layouts()
-  });
+   $(".widths .val").focus(function() {
+     $(this).addClass('focus')
+   })
+   .keyup(function() {
+     var val = sanitize_number($(this).text());
+     if (val < 1) $(this).text('0');
+     create_grid();
+     return false;
+   })
+   .blur(function() {
+     $(this).removeClass('focus')
+     return false;
+   });
 
 });
