@@ -1,7 +1,7 @@
 Grid Manager
 =================
 
-Grid Manager help you select the ultimate fixed grid when designing adaptive websites by visualizing grid combinations to fit into standard devices.
+Grid Manager help you select the Simplest grid when designing adaptive websites by visualizing grid combinations.
 
 
 Checkout http://elner.github.com/gridmanager/!
