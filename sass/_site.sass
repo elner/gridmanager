@@ -104,9 +104,6 @@ header
 
 .hr
   clear: both
-  background: transparent url(../images/dashed.png) repeat-x center top
-  min-height: 8px
-  margin-top: -8px
 
 
 
@@ -185,16 +182,20 @@ article
     text-decoration: none
 #simplest
   display: none
-  font-family: monospace
-  font-size: 14px
-  white-space:  pre
-  text-align:  left
   width: 300px
   padding: 15px
   margin: 0 auto
   +box-shadow(0 1px 2px rgba(0,0,0, .2) inset, 0 1px 0 rgba(255,255,255, .6))
   +border-radius(5px)
   background-color: rgba(255,255,255,.2)
+  code
+    font-family: monospace
+    font-size: 14px
+    white-space:  pre
+    text-align:  left
+  select
+    display: block
+    margin: 10px auto 0 auto
 
 
 
